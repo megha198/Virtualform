@@ -1,38 +1,48 @@
 <div class="container-fluid ">
   <h1>Virtual Workshop Registration  form</h1>
+   <img src="https://image.freepik.com/free-vector/webinar-background-in-flat-style_23-2147767944.jpg"width="100%" height="100px" class="mx-auto d-block" style="width:100%"  style="height:50%">   
   <hr>
-  <p> Join the 3-day web development <br>
-    virtual workshop and become a <br>
-    hirable freelancer.
+<h3>
+  <p  class="text-center"> Join the 3-day web development 
+    virtual workshop and become a 
+    hirable freelancer!!!!!!!
    </p>
+  
 <pre>
-  Participation Fee:$200
+ <p class="text-center">Participation Fee:$200</p>
 </pre>
-<pre>
-  Limited slots!Reserve now!
-</pre>
+<pre></pre>
+  <p class="text-center">Limited slots!Reserve now!!!! </p>
+
+</h3>
 <div>
-<p style="text-align: right">
-  <h4> Virtual Workshop Schedule</h4>
-  <p>May 1-3 </p>
+  <h6> Virtual Workshop Schedule </h6>
+  <p>May 1-3   <br>
+    May 15-18 <br>  
+    June 1-3<br>
+    June 15-18<br>
+    July 1-3<br>
+    July 15-18
+  </p>
 
 </div>
 
 
  
 
-<div>
+<div class="form-check mb-3">
 <label>Please rate your web development or programming knowledge</label><br>
 <input type="checkbox" class="form-check-input" name= "I don't have any idea at all"><label class="form-check-label">I don't have any idea at all</label><br>
 <input type="checkbox" class="form-check-input" name= "I'm a newbie in web development and programming "><label class="form-check-label">I'm a newbie in web development and programming </label><br>
 <input type="checkbox" class="form-check-input" name= "I have watched tutorials online"><label class="form-check-label">I have watched tutorials online</label><br>
 <input type="checkbox" class="form-check-input" name= " I have a web development-related working experience"><label class="form-check-label">I have a web development-related working experience</label><br>
 <input type="checkbox" class="form-check-input" name= "I'm currently working as a web developer and wants to improve my skills"><label class="form-check-label">I'm currently working as a web developer and wants to improve my skills</label><br>
-<input type="checkbox" class=" form-check-input" type="text" name="Other"><label class="form-check-label">Other</label>
+<input class="form-control" type="text" placeholder="Other">
+
 </div>
 <pre>
 </pre>
-<div>
+<div class="form-check mb-3">
   <label>I'd like to learn about the following:</label><br>
   <input type="checkbox" class="form-check-input" name= "HTML"><label class="form-check-label">HTML</label><br>
   <input type="checkbox" class="form-check-input" name= "Javascript "><label class="form-check-label">Javascript</label><br>
@@ -45,66 +55,169 @@
   <pre></pre>
 
 
-<h2>Partipant Information</h2>
-  <form  #userForm="ngForm">
-    {{userForm.value | json}}
+<h2>Participant Information</h2>
+  <form  #userForm="ngForm" (ngSubmit)="onSubmit()"novalidate >
+    <div class="form-check mb-3">
   <div class="form-group">
     <label>Name</label><br>
-    <label>firstname</label>
-    <input type="text" class="form-control" name="firstname" [(ngModel])="userModel.firstname">
-    <label>lastname</label>
-    <input type="text" class="form-control" name="lastname" [(ngModel)]="userModel.lastname">
-    </div>
-    </form>
+  <input type="text" required #firstname="ngModel"[class.is-invalid]="firstname.invalid && firstname.touched" class="form-control" name="firstname" [(ngModel)]="userModel.firstname">
+  <small>firstname</small>
+    
+    <input type="text" required #lastname="ngModel"[class.is-invalid]="lastname.invalid && lastname.touched" class="form-control" name="lastname" [(ngModel)]="userModel.lastname">
+    <small>lastname</small>
+  </div>
+  </div>
+    
     <hr>
     <div class="form-group">
+      <div class="form-check mb-3">
       <label>Phone Number</label><br>
-      <input type="email" class="form-control"  ngModel>
-      <input type="text" class="form-control" ngModel>
+      <input type="tel" #phone="ngModel" pattern="^\d{10}$" required
+
+    [class.is-invalid]="phone.invalid && phone.touched" class="form-control" name="phone" [(ngModel)]="userModel.phone">
+
+  </div>
+<div *ngIf="phone.errors && (phone.valid || phone.touched)">
+
+  <small class = "text-danger"  *ngIf="phone.errors.required">Phone no is required</small>
+
+  <small class = "text-danger"  *ngIf="phone.errors.pattern">Phone no must have 10 digits</small>
+      
+   </div>   
 </div>
     
 <div class="form-group">
+  <div class="form-check mb-3">
       <label>Email</label><br>
-      <input type="email" class="form-control"  ngModel>
+      <input type="text"  #email="ngModel" pattern="^[A-Za-z0-9+_.-]+@(.+)$"  required
+      [class.is-invalid]="email.invalid && email.touched" class="form-control" name="email" [(ngModel)]="userModel.email">
+      <div *ngIf="email.errors && (email.valid || email.touched)">
+      <small class = "text-danger"  *ngIf="email.errors.pattern">Email must be valid</small>
+    <small>example@example.com</small>
+    </div>
+    </div>
+    
       </div>
 <pre>
 </pre>
-
+ 
 <div class="form-group">
   <label>Address</label><br>
-  <input type="email" class="form-control" ngModel >
+  <input type="text"  class="form-control" name="streetaddress" [(ngModel)]="userModel.streetaddress">
+  <small>Street Address</small>
   </div>
-  <div class="form-group">
-    <label> Street Address</label><br>
-    <input type="email" class="form-control"  ngModel>
-    </div>
+  
     <div class="form-group">
-      <label> Street Address line 2</label><br>
-      <input type="email" class="form-control" ngModel >
-      <input type="email" class="form-control" ngModel >
-      <pre>
-    <input type="email" class="form-control" ngModel  > 
-      </pre>
-      </div>
+      <input type="text" class="form-control" name="streetAddressline2" [(ngModel)]="userModel.streetAddressline2">
+      <small>Street Address Line 2</small>
+      
+      <div class="form-group">
+        <input type="text" class="form-control" name="city" [(ngModel)]="userModel.city">
+        <small> City</small>
+        <div class="form-group">
+        <input type="text"  class="form-control" name="state" [(ngModel)]="userModel.state">
+        <small>State /Province</small>
+        <div class="form-group">
+        <input type="text" class="form-control" name="postal" [(ngModel)]="userModel.postal">
+        <small>Postal/zipcode</small>
+        </div>
+        </div>
+        </div>
+      
+    </div>
+      
 
     <pre></pre>
+    <div class="form-check mb-3">
     <div class="form-group">
       <label> Occupation</label><br>
-      <input type="email" class="form-control" ngModel >
+      <input type="text" class="form-control" name="occupation" [(ngModel)]="userModel.occupation">
+      <small>Optional/Current or Previous</small>
       </div>
+    </div>
       <pre>
       </pre>
+      <div class="form-check mb-3">
       <div class="form-group">
         <label> Company Name</label><br>
-        <input type="email" class="form-control" ngModel  >
+        <input type="text" class="form-control" name="Companyname" [(ngModel)]="userModel.Companyname">
+      <small>Optional/Current or Previous</small>
+      </div>
+        
         </div>
 
         <pre>
         </pre>
+        <div class="form-check mb-3">
         <div class="form-group">
           <label> Job Position Title</label><br>
-          <input type="email" class="form-control"  ngModel >
-          </div>
+          <input type="text" class="form-control" name="Jobposition" [(ngModel)]="userModel.Jobposition">
+    </div>
+    </div>
+
+    <pre>
+</pre> 
+
+<h2>Payment Information</h2>
+<div class="form-check mb-3">
+<h5> Workshop dates  (2020)</h5>
+<input type="checkbox" class="form-check-input" name="May 1-3"><label class="form-check-label">May 1-3</label><br>
+<input type="checkbox" class="form-check-input" name="May 15-18"><label class="form-check-label">May 15-18</label><br>
+<input type="checkbox" class="form-check-input" name="Jun 1-3"><label class="form-check-label">Jun 1-3</label><br>
+<input type="checkbox" class="form-check-input" name="Jun 15-18"><label class="form-check-label">Jun 15-18</label><br>
+<input type="checkbox" class="form-check-input" name="Jul 15-18"><label class="form-check-label">Jul 15-18</label><br>
+</div>
+<div class="mb-3">
+  <label>Virtual Workshop Payment</label>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="payment" value="Participation fee $200">
+    <label class="form-check-label">Participation fee $200</label>
+  </div>
+  <div class="mb-3">
+    <label>Virtual Workshop Payment</label>
+    <select name="Payment" class="custom-select">
+      <option selected></option>
+      <option value="Debit/credit">debit/credit</option>
+      <option value="Phonepay">Phonepay</option>
+      <option value="Googlepay">Googlepay</option>
+    </select>
+    <div class="mb-3">
+      <label>Any additional comments or information  you would like to share?</label>
+      <!-- <input type="" class=" form-check-input"  name="Type here..."><label class="form-check-label"></label> -->
+      <!-- <input class="form-group" type="text" placeholder="Type here..." rows="3"> -->
+      <div class="form-group ">
+<textarea class="form-control" id="exampleFormControlTextarea4"placeholder="Type here..." rows="3"></textarea>
+<pre></pre>
+
+  <label>How did you learn about this virtual training program?</label><br>
+  <div class="form-check mb-10">
+  <div class="row">
+  <div class="col-sm-6">
+  <input type="checkbox" class="form-check-input" name= "Facebook"><label class="form-check-label">Facebook</label><br>
+  <input type="checkbox" class="form-check-input" name= "Instagaram "><label class="form-check-label">Instagram</label><br>
+  <input type="checkbox" class="form-check-input" name= "Search Engine"><label class="form-check-label">SearchEngine</label><br>
+  <input type="checkbox" class="form-check-input" name= " Refrerral"><label class="form-check-label">Refrerral</label><br>
+  <div class="row">
+  <div class="col-sm-6">
+  <input type="checkbox" class="form-check-input" name= "Twitter"><label class="form-check-label">Twitter</label><br>
+  <input type="checkbox" class=" form-check-input"  name="Online Ads"><label class="form-check-label">Online-ads</label>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="text-center">
+  <button class="btn btn-dark" type="submit">Register Now</button> 
+  </div>
+
+
+
+  
+</div>
+
+
+
+
+
 
 
   

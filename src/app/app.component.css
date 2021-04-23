@@ -1,14 +1,24 @@
 h1{
     text-align: center;
     color:white;
-    background-color:green ;
+    background-color:green;
+}
+img{
+    width: 40%;
+    height: 10%; 
+}
+div{
+    color: black;
 }
 hr{
-    color:blue;
+    color:black;
     margin-top: 2%;
     margin-bottom: 0.5;
     border-style: inset;
-    border: width 10px; ;
+    border: width 10px; 
+    box-sizing: content-box;
+    height: 0; 
+    overflow: visible;
     
 }
 h2{
