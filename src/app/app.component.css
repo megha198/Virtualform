@@ -1,0 +1,18 @@
+h1{
+    text-align: center;
+    color:white;
+    background-color:green ;
+}
+hr{
+    color:blue;
+    margin-top: 2%;
+    margin-bottom: 0.5;
+    border-style: inset;
+    border: width 10px; ;
+    
+}
+h2{
+    text-align: center;
+    color:white;
+    background-color:green ;
+}
